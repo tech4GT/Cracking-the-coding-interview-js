@@ -1,14 +1,4 @@
-
-
 (function() {
-
-    arr = [1, 2, 3, 4, 5];
-    console.log(arr);
-    numberSwapperBitManip(arr, 1, 2);
-    console.log(arr);
-
-    let book = "this is a book with many many words", queries = ["this", "many", "something"];
-    console.log(lookInBook(book, queries));
 
     let point1 = {
         x: 0,
@@ -23,44 +13,8 @@
             y: 0
         };
     pointOfIntersection(point1, point2, point3, point1);
-    console.log(ticTac([[1, 0, 1], [0, 1, 1], [0, 1, 0]]));
-
 
 })();
-
-function numberSwapper(arr, i, j) {
-    arr[i] = arr[i] - arr[j];
-    arr[j] = arr[i] + arr[j];
-    arr[i] = arr[j] - arr[i];
-}
-
-function numberSwapperBitManip(arr, i, j) {
-    arr[i] = arr[i] ^ arr[j];
-    arr[j] = arr[i] ^ arr[j];
-    arr[i] = arr[i] ^ arr[j];
-}
-
-function lookInBook(book, queries) {
-    let rv = [], obj = {}, words = book.split(" ");
-
-    if (!book) throw Exception("Please provide a book")
-
-    //pre-processing
-    for (let word of words) {
-        if (obj.hasOwnProperty(word)) obj[word]++;
-        else obj[word] = 1;
-    }
-
-    //conditions
-    if (!queries) return rv;
-
-    //query processing
-    for (let query of queries) {
-        if (obj.hasOwnProperty(query)) rv.push(obj[query]);
-        else rv.push(0);
-    }
-    return rv;
-}
 
 function pointOfIntersection(start1, end1, start2, end2) {
     var line1 = getLine(start1, end1), line2 = getLine(start2, end2);
@@ -109,24 +63,3 @@ function pointOfIntersection(start1, end1, start2, end2) {
         return false;
     }
 }
-
-// Xs are 1s and Os are 0s
-function ticTac(arr) {
-
-    //horizontal and vertical checks
-    for (let i = 0; i < 3; i++) {
-        if (arr[i][0] == arr[i][1] && arr[i][1] == arr[i][2]) return arr[i][0];
-        if (arr[0][i] == arr[1][i] && arr[1][i] == arr[2][i]) return arr[0][i];
-    }
-
-    //diagonal checks
-    if (arr[0][0] == arr[1][1] && arr[1][1] == arr[2][2]) return arr[0][0];
-    if (arr[0][2] == arr[1][1] && arr[1][1] == arr[2][0]) return arr[0][2];
-
-    return false;
-
-
-}
-
-
-
